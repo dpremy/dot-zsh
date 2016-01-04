@@ -1,0 +1,51 @@
+#!/bin/zsh
+
+# configure zsh history
+HISTFILE=~/.histfile
+HISTSIZE=5000
+SAVEHIST=5000
+setopt extendedhistory    # save timestamp and duration
+setopt histignorealldups  # ignore duplicates
+setopt histignorespace    # ignore lines which start with space
+setopt incappendhistory   # incremental append
+setopt sharehistory       # share history between zsh processes
+setopt HIST_REDUCE_BLANKS # reduce multiple spaces in a row
+setopt HIST_VERIFY        # when using hist make a newline show the change before executing it
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+setopt autocd                 # allow for changing directoy by just typing the path
+setopt extendedglob           # use additional pattern matching features. Treat the `#', `~' and `^' characters as part  of  patterns  for filename  generation, etc.  (An initial unquoted `~' always produces named directory expansion.
+unsetopt notify               # do not immediately report changes in background job status
+unsetopt beep                 # do not beep on errors
+setopt nomatch                # unnmatched patterns cause an error
+setopt interactivecomments    # set zsh to ignore inline comments. Used for aliases below to contain comments.
+setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+
+export EDITOR="vi"
+
+# set how keys behave when editing command lines to act like vi
+bindkey -e
+
+bindkey '\e[1~' beginning-of-line   # get home working
+bindkey '\e[4~' end-of-line         # get end working
+
+# ensure that arrow keys work as they should
+bindkey '\e[A' up-line-or-history
+bindkey '\e[B' down-line-or-history
+bindkey '\eOA' up-line-or-history
+bindkey '\eOB' down-line-or-history
+bindkey '\e[C' forward-char
+bindkey '\e[D' backward-char
+bindkey '\eOC' forward-char
+bindkey '\eOD' backward-char
+
+bindkey '\e[2~' overwrite-mode      # rebind the insert key
+bindkey '\e[3~' delete-char         # rebind the delete key
+bindkey -M viins ' ' magic-space    # allow spaces to also do completion
+
+# initialize compinstall
+  zstyle :compinstall filename '~/.files/scripts/zshrc'
+
+  autoload -Uz compinit
+  compinit

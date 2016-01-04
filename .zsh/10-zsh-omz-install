@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+if hash "zsh" 2>/dev/null; then
+  if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+    # setup omz custom theme
+    echo PS1=\"$BASH_PS1\">~/.oh-my-zsh/custom/custom.zsh-theme
+    echo PROMPT=\'$ZSH_PROMPT\'>>~/.oh-my-zsh/custom/custom.zsh-theme
+    echo RPROMPT=\"$ZSH_RPROMPT\">>~/.oh-my-zsh/custom/custom.zsh-theme
+  fi
+fi
