@@ -5,7 +5,7 @@ for zshrc_config in ~/.zsh/*[^~] ; do
 done
 
 # oh-my-zsh configuration
-export ZSH=/home/davidremy/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="custom"
 plugins=(gitfast vi colorize extract colored-man rsync)
 source $ZSH/oh-my-zsh.sh
