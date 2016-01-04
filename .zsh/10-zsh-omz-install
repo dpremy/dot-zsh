@@ -2,11 +2,19 @@
 
 if hash "zsh" 2>/dev/null; then
   if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
-    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    # manually clone oh-my-zsh
+    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
     # setup omz custom theme
     echo PS1=\"$BASH_PS1\">~/.oh-my-zsh/custom/custom.zsh-theme
     echo PROMPT=\'$ZSH_PROMPT\'>>~/.oh-my-zsh/custom/custom.zsh-theme
     echo RPROMPT=\"$ZSH_RPROMPT\">>~/.oh-my-zsh/custom/custom.zsh-theme
+
+    # set omz theme
+    sed -i -e 's/^ZSH_THEME=.*$/ZSH_THEME=\"custom\"/' ~/.zshrc
+
+    # set omz plugins
+    sed -i -e 's/^plugins=.*$/plugins=(gitfast vi colorize extract colored-man rsync)/' ~/.zshrc
+
   fi
 fi
