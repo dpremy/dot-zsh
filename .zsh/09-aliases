@@ -1,12 +1,18 @@
 #!/bin/zsh
 
-# ls
-alias ls='ls -F --color=auto'
-alias lsa='ls -lah --color=auto'
-alias l='ls -la --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -lA --group-directories-first --color=auto'
-alias ls.='ls -d .* --color=auto'
+if (`command -v dircolor >/dev/null 2>&1`); then
+    export TTY_COLOR='--color=tty'
+  else
+    export TTY_COLOR=''
+fi
+
+#ls
+alias ls='ls -F $TTY_COLOR'
+alias lsa='ls -lah $TTY_COLOR'
+alias l='ls -la $TTY_COLOR'
+alias ll='ls -l $TTY_COLOR'
+alias la='ls -lA --group-directories-first $TTY_COLOR'
+alias ls.='ls -d .* $TTY_COLOR'
 alias sl=ls
 
 # directory management
@@ -27,12 +33,12 @@ alias chgrp='chgrp --preserve-root'
 alias mount='mount |column -t'
 
 # htop
-if (`which htop >/dev/null 2>&1`); then
+if (`command -v htop >/dev/null 2>&1`); then
   alias top='htop'
 fi
 
 # diff
-if (`which colordiff >/dev/null 2>&1`); then
+if (`command -v colordiff >/dev/null 2>&1`); then
   alias diff='colordiff'
 fi
 
@@ -43,7 +49,7 @@ alias wget='wget -c' # enable continue of downloads
 alias untar='tar -zxvf'
 
 # rsync
-if (`which rsync >/dev/null 2>&1`); then
+if (`command -v rsync >/dev/null 2>&1`); then
   alias rsync-copy='rsync -avzh --progress --stats'
   alias rsync-mirror='rsync -avzh --progress --stats --delete-before --delete-excluded'
   alias rsync-move='rsync -avzh --progress --stats --remove-source-files'
@@ -53,9 +59,10 @@ fi
 
 # grep
 alias grep-nocomments='grep -Ev '\''^( *)(#|$)'\''' # greps a file for lines without comments
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+
+alias grep='grep $TTY_COLOR'
+alias fgrep='fgrep $TTY_COLOR'
+alias egrep='egrep $TTY_COLOR'
 
 # dmesg
 alias dmesg='dmesg -L auto -T'
