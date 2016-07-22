@@ -20,14 +20,20 @@ alias ..='cd ..'
 alias cd..='cd ..'
 
 # confirmation on mass file changes
-alias mv='mv -i'
-alias cp='cp -i'
-alias ln='ln -i'
+if [[ `uname` == 'Linux' ]]
+then
+  alias mv='mv -i'
+  alias cp='cp -i'
+  alias ln='ln -i'
+fi
 
 # prompt if changing perms or owner on more than 3 files at a time
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+if [[ `uname` == 'Linux' ]]
+then
+  alias chown='chown --preserve-root'
+  alias chmod='chmod --preserve-root'
+  alias chgrp='chgrp --preserve-root'
+fi
 
 # mount
 alias mount='mount |column -t'
@@ -65,7 +71,10 @@ alias fgrep='fgrep $TTY_COLOR'
 alias egrep='egrep $TTY_COLOR'
 
 # dmesg
-alias dmesg='dmesg -L auto -T'
+if [[ `uname` == 'Linux' ]]
+then
+  alias dmesg='dmesg -L auto -T'
+fi
 
 # disk, partition, folder and file usage commands
   # disk usage in the current directory

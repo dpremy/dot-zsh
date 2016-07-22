@@ -21,6 +21,11 @@ unsetopt beep                 # do not beep on errors
 setopt nomatch                # unnmatched patterns cause an error
 setopt interactivecomments    # set zsh to ignore inline comments. Used for aliases below to contain comments.
 setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+setopt autopushd              # store all cd's in to the pushd stack
+setopt pushdsilent            # do not show the pushd stack
+setopt pushdminus             # swap pushd + and - so that a - removes an entry
+setopt pushdignoredups        # do not store duplicate directories in the pushd stack
+
 
 export EDITOR="vi"
 
