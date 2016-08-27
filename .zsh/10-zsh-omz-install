@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 if hash "zsh" 2>/dev/null; then
-  if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+  # check if omsh is already installed or the ignore file has been create
+  if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ~/.omzsh-ignore ]; then
     # manually clone oh-my-zsh
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
@@ -15,6 +16,5 @@ if hash "zsh" 2>/dev/null; then
 
     # set omz plugins
     sed -i -e 's/^plugins=.*$/plugins=(gitfast vi colorize extract colored-man rsync)/' ~/.zshrc
-
   fi
 fi
