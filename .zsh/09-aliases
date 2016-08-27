@@ -1,80 +1,110 @@
 #!/bin/zsh
 
-if (`command -v dircolor >/dev/null 2>&1`); then
+# detect if tty color support is installed
+  if (`command -v dircolor >/dev/null 2>&1`); then
     export TTY_COLOR='--color=tty'
   else
     export TTY_COLOR=''
-fi
+  fi
 
-#ls
-alias ls='ls -F $TTY_COLOR'
-alias lsa='ls -lah $TTY_COLOR'
-alias l='ls -la $TTY_COLOR'
-alias ll='ls -l $TTY_COLOR'
-alias la='ls -lA --group-directories-first $TTY_COLOR'
-alias ls.='ls -d .* $TTY_COLOR'
-alias sl=ls
+# detect if gnu coreutils are installed
+  if (`command -v gdircolors >/dev/null 2>&1`); then
+    export TTY_COLOR='--color=tty'
+  else
+    export TTY_COLOR=''
+  fi
+
+# ls
+  alias sl=ls
+  
+  if [[ `uname` == 'Linux' ]]; then
+    alias ls='ls -F $TTY_COLOR'
+    alias lsa='ls -lah $TTY_COLOR'
+    alias l='ls -la $TTY_COLOR'
+    alias ll='ls -l $TTY_COLOR'
+    alias la='ls -lA --group-directories-first $TTY_COLOR'
+    alias ls.='ls -d .* $TTY_COLOR'
+  fi
+
+  if [[ `uname` == 'OpenBSD' ]]; then
+    alias ls='gls -F --color $TTY_COLOR'
+    alias lsa='gls -lah --color $TTY_COLOR'
+    alias l='gls -la --color $TTY_COLOR'
+    alias ll='gls -l --color $TTY_COLOR'
+    alias la='gls -lA --group-directories-first --color $TTY_COLOR'
+    alias ls.='gls -d .* --color $TTY_COLOR'
+  fi
 
 # directory management
-alias ..='cd ..'
-alias cd..='cd ..'
+  alias ..='cd ..'
+  alias cd..='cd ..'
 
 # confirmation on mass file changes
-if [[ `uname` == 'Linux' ]]
-then
-  alias mv='mv -i'
-  alias cp='cp -i'
-  alias ln='ln -i'
-fi
+  if [[ `uname` == 'Linux' ]]; then
+    alias mv='mv -i'
+    alias cp='cp -i'
+    alias ln='ln -i'
+  fi
+
+  if [[ `uname` == 'OpenBSD' ]]; then
+    alias mv='gmv -i'
+    alias cp='gcp -i'
+    alias ln='gln -i'
+  fi
 
 # prompt if changing perms or owner on more than 3 files at a time
-if [[ `uname` == 'Linux' ]]
-then
-  alias chown='chown --preserve-root'
-  alias chmod='chmod --preserve-root'
-  alias chgrp='chgrp --preserve-root'
-fi
+  if [[ `uname` == 'Linux' ]]; then
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
+  fi
+
+  if [[ `uname` == 'OpenBSD' ]]; then
+    alias chown='gchown --preserve-root'
+    alias chmod='gchmod --preserve-root'
+    alias chgrp='gchgrp --preserve-root'
+  fi
 
 # mount
-alias mount='mount |column -t'
+  alias mount='mount |column -t'
 
 # htop
-if (`command -v htop >/dev/null 2>&1`); then
-  alias top='htop'
-fi
+  if (`command -v htop >/dev/null 2>&1`); then
+    alias top='htop'
+  fi
 
 # diff
-if (`command -v colordiff >/dev/null 2>&1`); then
-  alias diff='colordiff'
-fi
+  if (`command -v colordiff >/dev/null 2>&1`); then
+    alias diff='colordiff'
+  fi
 
 # wget
-alias wget='wget -c' # enable continue of downloads
+  alias wget='wget -c' # enable continue of downloads
 
 # tar
-alias untar='tar -zxvf'
+  alias untar='tar -zxvf'
 
 # rsync
-if (`command -v rsync >/dev/null 2>&1`); then
-  alias rsync-copy='rsync -avzh --progress --stats'
-  alias rsync-mirror='rsync -avzh --progress --stats --delete-before --delete-excluded'
-  alias rsync-move='rsync -avzh --progress --stats --remove-source-files'
-  alias rsync-synchronize='rsync -avzuh --progress --stats --delete'
-  alias rsync-update='rsync -avzuh --progress --stats'
-fi
+  if (`command -v rsync >/dev/null 2>&1`); then
+    alias rsync-copy='rsync -avzh --progress --stats'
+    alias rsync-mirror='rsync -avzh --progress --stats --delete-before --delete-excluded'
+    alias rsync-move='rsync -avzh --progress --stats --remove-source-files'
+    alias rsync-synchronize='rsync -avzuh --progress --stats --delete'
+    alias rsync-update='rsync -avzuh --progress --stats'
+  fi
 
 # grep
-alias grep-nocomments='grep -Ev '\''^( *)(#|$|;)'\''' # greps a file for lines without comments
+  alias grep-nocomments='grep -Ev '\''^( *)(#|$|;)'\''' # greps a file for lines without comments
 
-alias grep='grep $TTY_COLOR'
-alias fgrep='fgrep $TTY_COLOR'
-alias egrep='egrep $TTY_COLOR'
+  alias grep='grep $TTY_COLOR'
+  alias fgrep='fgrep $TTY_COLOR'
+  alias egrep='egrep $TTY_COLOR'
 
 # dmesg
-if [[ `uname` == 'Linux' ]]
-then
-  alias dmesg='dmesg -L auto -T'
-fi
+  if [[ `uname` == 'Linux' ]]
+  then
+    alias dmesg='dmesg -L auto -T'
+  fi
 
 # disk, partition, folder and file usage commands
   # disk usage in the current directory
