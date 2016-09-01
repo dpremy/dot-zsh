@@ -1,5 +1,5 @@
 # configure zsh history
-  HISTFILE=~/.histfile
+  HISTFILE=~/.zsh_history
   HISTSIZE=5000
   SAVEHIST=5000
   setopt extendedhistory        # save timestamp and duration
