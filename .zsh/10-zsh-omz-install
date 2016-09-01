@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 if hash "zsh" 2>/dev/null; then
   # check if omsh is already installed or the ignore file has been create
   if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ~/.omzsh-ignore ]; then

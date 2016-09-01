@@ -1,6 +1,4 @@
-#!/bin/zsh
-
-# unset variables
+# set default variables
   TTY_COLOR=''
   GNU_TTY_COLOR=''
   GNU_PRESERVE=''
@@ -43,6 +41,10 @@
 
 # mount
   alias mount='mount |column -t'
+
+# who
+  # show user idle time
+  alias who='who -u'
 
 # htop
   if (`command -v htop >/dev/null 2>&1`); then

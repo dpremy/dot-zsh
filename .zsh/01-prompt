@@ -1,6 +1,4 @@
-#!/bin/zsh
-#
-## zsh prompt configuration
+# zsh prompt configuration
 ZSH_PROMPT='%{%f%k%b%}%{%B%F{green}%}%n%{%B%F{blue}%}@%{%B%F{cyan}%}%m%{%B%} %F{yellow}(zsh) %{%b%F{yellow}%}%~%{%B%F{green}%}%f%k%b%}
 %{%}%{%}%#%{%f%k%b%} '
 ZSH_RPROMPT="%(?.%{%b%F{green}%}.%{%b%F{red}%})%*%{$reset_color%}"

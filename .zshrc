@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # source all files in ~/.zsh/
 for zshrc_config in ~/.zsh/*[^~] ; do
     source $zshrc_config
