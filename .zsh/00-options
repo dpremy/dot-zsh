@@ -20,16 +20,20 @@
   setopt pushdignoredups        # do not store duplicate directories in the pushd stack
 
 # misc options
-  setopt autocd                 # allow for changing directoy by just typing the path
+  setopt autocd                 # allow for changing directory by just typing the path
   setopt extendedglob           # use additional pattern matching features. Treat the `#', `~' and `^' characters as part  of  patterns  for filename  generation, etc.  (An initial unquoted `~' always produces named directory expansion.
   unsetopt notify               # do not immediately report changes in background job status
   unsetopt beep                 # do not beep on errors
-  setopt nomatch                # unnmatched patterns cause an error
+  setopt nomatch                # unmatched patterns cause an error
   setopt interactivecomments    # set zsh to ignore inline comments. Used for aliases below to contain comments.
   setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.
 
 # editor options
   export EDITOR="vi"
+
+# utf8 locale support
+  export LC_CTYPE=en_US.UTF-8
+  export LANG=en_US.UTF-8
 
 # set how keys behave when editing command lines to act like vi
   bindkey -e
