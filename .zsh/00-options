@@ -32,8 +32,9 @@
   export EDITOR="vi"
 
 # utf8 locale support
-  export LC_CTYPE=en_US.UTF-8
   export LANG=en_US.UTF-8
+  export LC_CTYPE=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
 
 # set how keys behave when editing command lines to act like vi
   bindkey -e
