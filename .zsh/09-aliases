@@ -79,8 +79,9 @@
   alias fgrep='fgrep'$TTY_COLOR
   alias egrep='egrep'$TTY_COLOR
 
-  # greps a file for lines without comments
-  alias grep-nocomments='grep -Ev '\''^( *)(#|$|;)'\'''
+# grep output for lines without common comment
+  alias nocomments='grep -Evi '\''^( *)(#|$|;|//|--|rem|::|\"|\|\|)'\'''
+  alias comments='grep -Ei '\''^(#|;|//|--|rem|::|\"|\|\|)'\'''
 
 # dmesg
   if [[ `uname` == 'Linux' ]]; then
