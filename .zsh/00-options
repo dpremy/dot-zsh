@@ -2,7 +2,7 @@
 
 # configure zsh history
   HISTFILE=~/.zsh_history
-  HISTSIZE=5000
+  HISTSIZE=5500
   SAVEHIST=5000
   setopt extendedhistory        # save timestamp and duration
   setopt histignorealldups      # ignore duplicates
@@ -11,8 +11,8 @@
   setopt sharehistory           # share history between zsh processes
   setopt HIST_REDUCE_BLANKS     # reduce multiple spaces in a row
   setopt HIST_VERIFY            # when using hist make a newline show the change before executing it
-  setopt HIST_EXPIRE_DUPS_FIRST
-  setopt HIST_FIND_NO_DUPS
+  setopt HIST_EXPIRE_DUPS_FIRST # oldest history event that has a duplicate will be lost before losing a unique event from the list
+  setopt HIST_FIND_NO_DUPS      # when searching history entries , do not display duplicates of a line previously found, even if the duplicates are not contiguous
 
 # configure the pushd stack
   DIRSTACKSIZE=20               # set the limit for allowed dirs in the pushd history
@@ -29,6 +29,7 @@
   setopt nomatch                # unmatched patterns cause an error
   setopt interactivecomments    # set zsh to ignore inline comments. Used for aliases below to contain comments.
   setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.
+  setopt ALIASES                # expand aliases
 
 # editor options
   export EDITOR="vi"
