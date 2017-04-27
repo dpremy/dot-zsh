@@ -85,8 +85,10 @@
     alias rsync-update='rsync -avzuh --progress --stats'
   fi
 
-# termbin.com alias
+# cli to online paste aliases
   alias termbin='nc termbin.com 9999'
+  alias clibin="curl -q -F 'clbin=<-' https://clbin.com; echo Append '?hl' to the url for highlighting"
+  alias pastebin=clibin
 
 # grep
   alias grep='grep'$TTY_COLOR
