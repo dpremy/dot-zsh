@@ -10,11 +10,5 @@ if hash "zsh" 2>/dev/null; then
     echo PS1=\"$BASH_PS1\">~/.oh-my-zsh/custom/custom.zsh-theme
     echo PROMPT=\'$ZSH_PROMPT\'>>~/.oh-my-zsh/custom/custom.zsh-theme
     echo RPROMPT=\"$ZSH_RPROMPT\">>~/.oh-my-zsh/custom/custom.zsh-theme
-
-    # set omz theme
-    sed -i -e 's/^ZSH_THEME=.*$/ZSH_THEME=\"custom\"/' ~/.zshrc
-
-    # set omz plugins
-    sed -i -e 's/^plugins=.*$/plugins=(gitfast vi colorize extract colored-man rsync)/' ~/.zshrc
   fi
 fi
