@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if hash "zsh" 2>/dev/null; then
+if [ $(whence -p zsh) ]; then
   # check if omzsh is already installed or the ignore file has been create
   if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ~/.omzsh-ignore ]; then
     # manually clone oh-my-zsh
