@@ -12,6 +12,14 @@ true
   GNU_PRESERVE=""
   GNU=""
 
+# create aliases to sudo and doas so that aliases can be run via sudo and doas
+  if [ "$(whence -p sudo)" ]; then
+    alias sudo='sudo '
+  fi
+  if [ "$(whence -p doas)" ]; then
+    alias doas='doas '
+  fi
+
 # detect if tty color support is installed
   if [ "$(whence -p dircolors)" ]; then
     TTY_COLOR="--color=tty"
