@@ -3,8 +3,8 @@
 # uncomment next line to enable script debugging
 #setopt VERBOSE
 
-# source all files in ${HOME}/.zsh/
-for zshrc_config in "${HOME}/.zsh/"*[^~] ; do
+# source all numbered files in ${HOME}/.zsh/
+for zshrc_config in "${HOME}/.zsh/"[0-9]*[^~] ; do
     source "${zshrc_config}"
 done
 
