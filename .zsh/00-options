@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # configure zsh history
-  HISTFILE=~/.zsh_history
+  HISTFILE=${HOME}/.zsh_history
   HISTSIZE=5500
   SAVEHIST=5000
   setopt extendedhistory        # save timestamp and duration
@@ -46,7 +46,7 @@
   bindkey -M viins ' ' magic-space
 
 # initialize compinstall
-  zstyle :compinstall filename '~/.files/scripts/zshrc'
+  zstyle :compinstall filename '${HOME}/.files/scripts/zshrc'
 
   autoload -Uz compinit
   compinit
