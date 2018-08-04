@@ -16,7 +16,7 @@ for zshrc_config in "${HOME}/.zsh/"[0-9]*[^~] ; do
   source "${zshrc_config}"
 done
 
-# source ${HOME}/.zshrc_local if needed
+# source ${HOME}/.zshrc_local if found
 if [ -f "${HOME}/.zshrc_local" ]; then
   log_debug ".zshrc is sourcing ${HOME}/.zshrc_local"
   source "${HOME}/.zshrc_local"
