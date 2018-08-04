@@ -1,14 +1,25 @@
 #!/usr/bin/env zsh
 
+# create dummy log functions to prevent errors if ${HOME}/.zsh/debug isn't sourced properly
+if ! type log_debug &>/dev/null; then
+  function log_emergency () {}; function log_alert () {}; function log_critical () {}; function log_error () {}; function log_warning () {}; function log_notice () {}; function log_info () {}; function log_debug () {}
+fi
+
 if [ $(whence -p zsh) ]; then
   # check if omzsh is already installed or the ignore file has been create
   if [ ! -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ${HOME}/.omzsh-ignore ]; then
     # manually clone oh-my-zsh
+    log_debug "cloning oh-my-zsh via git"
     git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 
     # setup omz custom theme
+    log_debug "creating custom.zsh-theme"
     echo PS1=\"${BASH_PS1}\">|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo PROMPT=\'${ZSH_PROMPT}\'>>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo RPROMPT=\"${ZSH_RPROMPT}\">>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
+  elif [ -f ${HOME}/.omzsh-ignore ]; then
+    log_debug "${HOME}/.omzsh-ignore found, skipping oh-my-zsh install"
+  else
+    log_debug "oh-my-zsh found, skipping install"
   fi
 fi
