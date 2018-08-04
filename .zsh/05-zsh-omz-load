@@ -1,10 +1,21 @@
 #!/usr/bin/env zsh
 
+# create dummy log functions to prevent errors if ${HOME}/.zsh/debug isn't sourced properly
+if ! type log_debug &>/dev/null; then
+  function log_emergency () {}; function log_alert () {}; function log_critical () {}; function log_error () {}; function log_warning () {}; function log_notice () {}; function log_info () {}; function log_debug () {}
+fi
+
 # source oh-my-zsh if found with custom theme
 if [ -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ]; then
   export ZSH=${HOME}/.oh-my-zsh
   ZSH_THEME="custom"
+
+  log_debug "omz enabled plugins: gitfast vi colorize extract colored-man rsync"
   plugins=(gitfast vi colorize extract colored-man rsync)
+
+  log_debug "omz update prompt turned off"
   DISABLE_UPDATE_PROMPT=true
+
+  log_debug "sourcing ${ZSH}/oh-my-zsh.sh"
   source "${ZSH}/oh-my-zsh.sh"
 fi
