@@ -16,6 +16,10 @@ if [ -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ]; then
   log_debug "omz update prompt turned off"
   DISABLE_UPDATE_PROMPT=true
 
+  log_debug "turning nounset off as omz uses undefined vars"
+  unsetopt nounset
   log_debug "sourcing ${ZSH}/oh-my-zsh.sh"
   source "${ZSH}/oh-my-zsh.sh"
+  log_debug "turning nounset back on"
+  set -o nounset
 fi
