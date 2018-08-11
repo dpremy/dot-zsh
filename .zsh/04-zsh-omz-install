@@ -9,17 +9,17 @@ if [ $(whence -p zsh) ]; then
   # check if omzsh is already installed or the ignore file has been create
   if [ ! -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ${HOME}/.omzsh-ignore ]; then
     # manually clone oh-my-zsh
-    log_debug "cloning oh-my-zsh via git"
+    log_debug "04-zsh-omz-install cloning oh-my-zsh via git"
     git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 
     # setup omz custom theme
-    log_debug "creating custom.zsh-theme"
+    log_debug "04-zsh-omz-install creating custom.zsh-theme"
     echo PS1=\"${BASH_PS1}\">|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo PROMPT=\'${ZSH_PROMPT}\'>>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo RPROMPT=\"${ZSH_RPROMPT}\">>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
   elif [ -f ${HOME}/.omzsh-ignore ]; then
-    log_debug "${HOME}/.omzsh-ignore found, skipping oh-my-zsh install"
+    log_debug "04-zsh-omz-install ${HOME}/.omzsh-ignore found, skipping oh-my-zsh install"
   else
-    log_debug "oh-my-zsh found, skipping install"
+    log_debug "04-zsh-omz-install oh-my-zsh found, skipping install"
   fi
 fi
