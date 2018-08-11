@@ -25,12 +25,6 @@ set -o nounset
 # Turn on verbose zsh output, useful while debugging but commented out by default
 #set -o verbose
 
-# set variables for current directory, file, and basename
-# https://stackoverflow.com/a/28336473
-__dir="$(cd "$(dirname "${(%):-%N}")" && pwd)"
-__file="${__dir}/$(basename "${(%):-%x}")"
-__base="$(basename "${__file}")"
-
 # Define the environment variables (and their defaults) that this script depends on
 LOG_LEVEL="${LOG_LEVEL-5}" # 7 = debug -> 0 = emergency
 NO_COLOR="${NO_COLOR-}"    # true = disable color. otherwise autodetected
