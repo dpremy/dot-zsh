@@ -13,13 +13,15 @@
   setopt HIST_VERIFY            # when using hist make a newline show the change before executing it
   setopt HIST_EXPIRE_DUPS_FIRST # oldest history event that has a duplicate will be lost before losing a unique event from the list
   setopt HIST_FIND_NO_DUPS      # when searching history entries , do not display duplicates of a line previously found, even if the duplicates are not contiguous
+  log_debug "00-options zsh history options set"
 
 # configure the pushd stack
   DIRSTACKSIZE=20               # set the limit for allowed dirs in the pushd history
   setopt autopushd              # store all cd's in to the pushd stack
   setopt pushdsilent            # do not show the pushd stack
   setopt pushdminus             # swap pushd + and - so that a - removes an entry
-  setopt pushdignoredups        # do not store duplicate directories in the pushd stack
+  setopt pushdignoredups        # do not store duplicate directories in the pushd stackA
+  log_debug "00-options zsh pushd stack configured"
 
 # misc options
   setopt autocd                 # allow for changing directory by just typing the path
@@ -38,6 +40,7 @@
   export LANG=en_US.UTF-8
   export LC_CTYPE=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
+  log_debug "00-options utf8 support enabled"
 
 # set how keys behave when editing command lines to act like vi
   bindkey -e
