@@ -12,13 +12,13 @@ fi
 
 # source all numbered files in ${HOME}/.zsh/
 for zshrc_config in "${HOME}/.zsh/"[0-9]*[^~] ; do
-  log_debug ".zshrc is sourcing ${zshrc_config}"
+  log_info ".zshrc sourcing ${zshrc_config}"
   source "${zshrc_config}"
 done
 
 # source ${HOME}/.zshrc_local if found
 if [ -f "${HOME}/.zshrc_local" ]; then
-  log_debug ".zshrc is sourcing ${HOME}/.zshrc_local"
+  log_info ".zshrc sourcing ${HOME}/.zshrc_local"
   source "${HOME}/.zshrc_local"
 else
   log_debug ".zshrc did not find ${HOME}/.zshrc_local, skipping"
