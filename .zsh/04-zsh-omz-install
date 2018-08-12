@@ -14,7 +14,6 @@ if [ $(whence -p zsh) ]; then
 
     # setup omz custom theme
     log_debug "04-zsh-omz-install creating custom.zsh-theme"
-    echo PS1=\"${BASH_PS1}\">|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo PROMPT=\'${ZSH_PROMPT}\'>>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
     echo RPROMPT=\"${ZSH_RPROMPT}\">>|${HOME}/.oh-my-zsh/custom/custom.zsh-theme
   elif [ -f ${HOME}/.omzsh-ignore ]; then
