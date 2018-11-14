@@ -4,11 +4,11 @@
   HISTFILE=${HOME}/.zsh_history
   HISTSIZE=5500
   SAVEHIST=5000
-  setopt extendedhistory        # save timestamp and duration
-  setopt histignorealldups      # ignore duplicates
-  setopt histignorespace        # ignore lines which start with space
-  setopt incappendhistory       # incremental append
-  setopt sharehistory           # share history between zsh processes
+  setopt EXTENDED_HISTORY       # save timestamp and duration
+  setopt HIST_IGNORE_DUPS       # ignore duplicates
+  setopt HIST_IGNORE_SPACE      # ignore lines which start with space
+  setopt INC_APPEND_HISTORY     # append history file incrementally
+  setopt SHARE_HISTORY          # share history between zsh processes
   setopt HIST_REDUCE_BLANKS     # reduce multiple spaces in a row
   setopt HIST_VERIFY            # when using hist make a newline show the change before executing it
   setopt HIST_EXPIRE_DUPS_FIRST # oldest history event that has a duplicate will be lost before losing a unique event from the list
@@ -17,19 +17,19 @@
 
 # configure the pushd stack
   DIRSTACKSIZE=20               # set the limit for allowed dirs in the pushd history
-  setopt autopushd              # store all cd's in to the pushd stack
-  setopt pushdsilent            # do not show the pushd stack
-  setopt pushdminus             # swap pushd + and - so that a - removes an entry
-  setopt pushdignoredups        # do not store duplicate directories in the pushd stackA
+  setopt AUTO_PUSHD             # store all cd's in to the pushd stack
+  setopt PUSHD_SILENT           # do not show the pushd stack
+  setopt PUSHD_MINUS            # swap pushd + and - so that a - removes an entry
+  setopt PUSHD_IGNORE_DUPS      # do not store duplicate directories in the pushd stackA
   log_debug "00-options zsh pushd stack configured"
 
 # misc options
-  setopt autocd                 # allow for changing directory by just typing the path
-  setopt extendedglob           # use additional pattern matching features. Treat the `#', `~' and `^' characters as part  of  patterns  for filename  generation, etc.  (An initial unquoted `~' always produces named directory expansion.
-  unsetopt notify               # do not immediately report changes in background job status
-  unsetopt beep                 # do not beep on errors
-  setopt nomatch                # unmatched patterns cause an error
-  setopt interactivecomments    # set zsh to ignore inline comments. Used for aliases below to contain comments.
+  setopt AUTO_CD                # allow for changing directory by just typing the path
+  setopt EXTENDED_GLOB          # use additional pattern matching features. Treat the `#', `~' and `^' characters as part  of  patterns  for filename  generation, etc.  (An initial unquoted `~' always produces named directory expansion.
+  unsetopt NOTIFY               # do not immediately report changes in background job status
+  unsetopt BEEP                 # do not beep on errors
+  setopt NOMATCH                # unmatched patterns cause an error
+  setopt INTERACTIVE_COMMENTS   # set zsh to ignore inline comments. Used for aliases below to contain comments.
   setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.
   setopt ALIASES                # expand aliases
 
