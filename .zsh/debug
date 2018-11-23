@@ -18,7 +18,7 @@
 
 # Exit on error. Append "|| true" if you expect an error.
 #set -o errexit
-# Do not allow use of undefined vars. Use ${VAR:-} to use an undefined VAR
+# Do not allow use of undefined vars. Use ${VAR-} to use an undefined VAR
 set -o nounset
 # Turn on traces, useful while debugging but commented out by default
 #set -o xtrace
@@ -52,7 +52,7 @@ function __log () {
 
   local colorvar="color_${log_level}"
 
-  #local color="${!colorvar:-${color_error}}"
+  #local color="${!colorvar-${color_error}}"
   local color=$(eval echo \$${colorvar})
   local color_reset="\x1b[0m"
 
