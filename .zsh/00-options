@@ -45,7 +45,7 @@
 # set how keys behave when editing command lines to act like vi
   bindkey -e
 
-# allow spaces to complete command histroy with !
+# allow spaces to complete command history with !
   bindkey -M viins ' ' magic-space
 
 # initialize compinstall
