@@ -53,6 +53,7 @@
 
   autoload -Uz compinit
   compinit
+  log_debug "00-options zsh completion initialized"
 
 # disable software flow control so C-s doesn't enable terminal scroll lock, in turn requiring C-q
   stty -ixon
