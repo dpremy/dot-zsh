@@ -10,7 +10,7 @@ if [ -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ]; then
   export ZSH=${HOME}/.oh-my-zsh
   ZSH_THEME="custom"
 
-  log_info "05-zsh-omz-load enabled plugins: gitfast vi colorize extract colored-man rsync"
+  log_info "05-zsh-omz-load enabled plugins: gitfast colorize extract colored-man-pages rsync"
   plugins=(gitfast colorize extract colored-man-pages rsync)
 
   log_debug "05-zsh-omz-load update prompt turned off"
