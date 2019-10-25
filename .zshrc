@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # source debugging functions
-test -f "${HOME}/.zsh/debug" && source "${HOME}/.zsh/debug"
+test -x "${HOME}/.zsh/debug" && source "${HOME}/.zsh/debug"
 
 # create dummy log functions to prevent errors if ${HOME}/.zsh/debug isn't sourced properly
 if ! type log_debug &>/dev/null; then
@@ -12,14 +12,16 @@ fi
 
 # source all numbered files in ${HOME}/.zsh/
 for zshrc_config in "${HOME}/.zsh/"[0-9]*[^~] ; do
-  log_info ".zshrc sourcing ${zshrc_config}"
-  source "${zshrc_config}"
+  if [ -x "${zshrc_config}" ]; then
+    log_info ".zshrc sourcing ${zshrc_config}"
+    source "${zshrc_config}"
+  fi
 done
 
-# source ${HOME}/.zshrc_local if found
-if [ -f "${HOME}/.zshrc_local" ]; then
-  log_info ".zshrc sourcing ${HOME}/.zshrc_local"
-  source "${HOME}/.zshrc_local"
-else
-  log_debug ".zshrc did not find ${HOME}/.zshrc_local, skipping"
-fi
+# source all ${HOME}/.zshrc_local files if found
+for zshrc_local in ${HOME}/.zshrc_local* ; do
+  if [ -x "${zshrc_local}" ]; then
+    log_info ".zshrc sourcing ${zshrc_local}"
+    source "${zshrc_local}"
+  fi
+done
