@@ -19,7 +19,8 @@ for zshrc_config in "${HOME}/.zsh/"[0-9]*[^~] ; do
 done
 
 # source all ${HOME}/.zshrc_local files if found
-for zshrc_local in ${HOME}/.zshrc_local* ; do
+# use NULL_GLOB to ignore errors when no local files are found
+setopt NULL_GLOB; for zshrc_local in ${HOME}/.zshrc_local* ; do
   if [ -x "${zshrc_local}" ]; then
     log_info ".zshrc sourcing ${zshrc_local}"
     source "${zshrc_local}"
