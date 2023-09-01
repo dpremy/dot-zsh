@@ -33,8 +33,11 @@
   setopt RM_STAR_WAIT           # 10 second wait if you do something that will delete everything.
   setopt ALIASES                # expand aliases
 
-# editor options
-  export EDITOR="vi"
+# editor and pager preferences
+  VISUAL="$(command -v nvim 2>/dev/null || command -v vim 2>/dev/null || command -v vi)"
+  EDITOR="$(command -v nvim 2>/dev/null || command -v vim 2>/dev/null || command -v vi)"
+  SUDO_EDITOR="$(command -v nvim 2>/dev/null || command -v vim 2>/dev/null || command -v vi)"
+  PAGER="$(command -v most 2>/dev/null || command -v less 2>/dev/null || command -v more)"
 
 # utf8 locale support
   export LANG=en_US.UTF-8
