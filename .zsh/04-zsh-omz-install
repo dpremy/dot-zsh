@@ -10,7 +10,7 @@ if [ $(whence -p zsh) ]; then
   if [ ! -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ] && [ ! -f ${HOME}/.omzsh-ignore ]; then
     # manually clone oh-my-zsh
     log_debug "04-zsh-omz-install cloning oh-my-zsh via git"
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+    git clone https://github.com/ohmyzsh/ohmyzsh.git ${HOME}/.oh-my-zsh
 
     # setup omz custom theme
     log_debug "04-zsh-omz-install creating custom.zsh-theme"
