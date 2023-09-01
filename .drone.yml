@@ -1,0 +1,18 @@
+---
+kind: pipeline
+type: docker
+name: shellcheck-zsh
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: shellcheck-zsh
+  image: koalaman/shellcheck-alpine:stable
+  pull: if-not-exists
+  commands:
+  - shellcheck -S warning -e SC1090 .zshrc
+  - shellcheck -S warning .zsh/*
+  when:
+    branch: master
