@@ -157,6 +157,11 @@ true
     alias dmesg='dmesg -Lauto -T'
   fi
 
+# zoxide for a smarter cd command
+  if [ "$(whence -p zoxide)" ]; then
+    eval "$(zoxide init --cmd cd zsh)"
+  fi
+
 # disk, partition, folder and file usage commands
   # disk usage in the current directory
   alias usagedirectory="$(whence -p du)"' -ch 2> /dev/null | tail -1'
