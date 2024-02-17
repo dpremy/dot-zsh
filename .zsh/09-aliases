@@ -157,6 +157,13 @@ true
     alias dmesg='dmesg -Lauto -T'
   fi
 
+# nicer ps output
+  psgrep() {
+    # use ps, even though shellcheck prefers pgrep, as it may not be available
+    # shellcheck disable=2009
+    ps -auxf | grep -v grep | grep "${@}" -i
+  }
+
 # zoxide for a smarter cd command
   if [ "$(whence -p zoxide)" ]; then
     eval "$(zoxide init --cmd cd zsh)"
